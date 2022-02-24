@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import "./styles.scss";
 import Header from "./Header.js";
 import Empty from "./Empty.js";
