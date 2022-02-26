@@ -4,7 +4,14 @@ export default function useVisualMode(initial) {
   const [mode, setMode ] = useState(initial);
   const [history, setHistory] = useState([initial])
 
-    const transition = (newMode) => {
+    const transition = (newMode, replace=false) => {
+      if (replace === true) {
+        //get array of current history
+        const prevHistory = [...history]
+        //replace last index with newMode
+        prevHistory.pop()
+        setHistory(prevHistory)
+      }
       setMode(newMode)
       //add new element to history array
       setHistory((prev) => [...prev, newMode])
@@ -15,7 +22,7 @@ export default function useVisualMode(initial) {
       if (history.length > 1) {
         //remove last element in history array
         const prevHistory = [...history]
-        
+
         prevHistory.pop()
         setHistory(prevHistory)
         //set mode to last element in history array
