@@ -13,13 +13,14 @@ const Show = function (props) {
     <section className="appointment__card-right">
       <section className="appointment__actions">
         <img
-          onClick = {props.onEdit}
+          //was onEdit
+          onClick = {props.edit}
           className="appointment__actions-button"
           src="images/edit.png"
           alt="Edit"
         />
         <img
-          onClick = {props.onDelete}
+          onClick = {props.cancel}
           className="appointment__actions-button"
           src="images/trash.png"
           alt="Delete"
