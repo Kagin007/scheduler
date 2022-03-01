@@ -12,9 +12,24 @@ export function useApplicationData() {
 
   //easy reset of data
   // axios.get('http://localhost:8001/api/debug/reset')
+  const spotsUpdate = (weekday, day, variable)  => {
+    let spot = day.spots;
+    console.log(spot)
+    //for creating
+    if( weekday === day.name && variable === "remove_spots") {
+      return spot - 1
+    }
+    //for deleting
+    else if ( weekday === day.name && variable === "add_spots") {
+      return spot + 1
+    }
+    //for editing
+    return spot
+  }
 
   function bookInterview(id, interview) {
 
+    console.log('id1:', id)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -26,10 +41,19 @@ export function useApplicationData() {
 
     return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview} )
       .then(() => {
-        setState({...state, appointments}) 
-        // interview: null}
+
+        const newDays = state.days.map((day) => {  
+          console.log(day)
+          return {...day, spots: spotsUpdate(state.day, day, "remove_spots" )} 
+        })
+
+        setState({
+          ...state,
+          days: newDays,
+          appointments
+        })
+
       })
-      // .catch(err => console.log(err))
     }
 
   function cancelInterview(id, interview) {
@@ -44,10 +68,18 @@ export function useApplicationData() {
 
     return axios.delete(`http://localhost:8001/api/appointments/${id}`, {interview} )
       .then(() => {
-        setState({...state,
-          appointments, interview: null})
+
+        const newDays = state.days.map((day) => {  
+          console.log(day)
+          return {...day, spots: spotsUpdate(state.day, day, "add_spots" )} 
+        })
+
+        setState({
+          ...state,
+          appointments,
+          interview: null,
+          days: newDays})
       })
-    //   .catch(err => console.log(err))
     }
 
 

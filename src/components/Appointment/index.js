@@ -17,6 +17,7 @@ import useVisualMode from 'hooks/useVisualMode';
   const DELETE = "DELETE";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
+  // const EDIT = "EDIT"
 
 const Appointment = function (props) {
 
@@ -74,7 +75,7 @@ const Appointment = function (props) {
         <Form
           student={props.interview && props.interview.student}
           interviewer={
-            props.interview && props.interview.interviewer.id}
+          props.interview && props.interview.interviewer.id}
           interviewers={props.interviews}
           save={save}
           // onSave={}
@@ -110,6 +111,7 @@ const Appointment = function (props) {
           onClose={()=>transition(SHOW)}
         />
       )}
+
     </article>
   );
 }
