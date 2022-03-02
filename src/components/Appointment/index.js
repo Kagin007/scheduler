@@ -7,6 +7,7 @@ import Status from "./Status.js";
 import Confirm from "./Confirm.js";
 import Error from "./Error.js";
 import useVisualMode from 'hooks/useVisualMode';
+import useApplicationData from 'hooks/useApplicationData';
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -16,7 +17,7 @@ import useVisualMode from 'hooks/useVisualMode';
   const DELETE = "DELETE";
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
-  // const EDIT = "EDIT"
+  const EDIT = "EDIT"
 
 const Appointment = function (props) {
 
@@ -25,7 +26,7 @@ const Appointment = function (props) {
   );
 
   function edit() {
-    transition(CREATE)
+    transition(EDIT)
   };
 
   function save(name, interviewer) {
@@ -40,7 +41,21 @@ const Appointment = function (props) {
     .then(() => transition(SHOW))
     .catch(error => transition(ERROR_SAVE, true));
 
-  }  
+  }
+
+  function update(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+
+    transition(SAVING)
+
+    props.editInterview(props.id, interview)
+    .then(() => transition(SHOW))
+    .catch(error => transition(ERROR_SAVE, true));
+
+  }
 
   function cancel(name, interviewer) {
     const interview = {
@@ -69,6 +84,16 @@ const Appointment = function (props) {
           cancel={() => transition(CONFIRM)}
           edit={edit}
         />
+      )}
+        {mode === EDIT && (
+        <Form
+        student={props.interview && props.interview.student}
+        interviewer={
+        props.interview && props.interview.interviewer.id}
+        interviewers={props.interviews}
+        save={update}
+        onCancel={()=>back()}
+      />
       )}
       {mode === CREATE && (
         <Form

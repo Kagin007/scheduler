@@ -56,6 +56,33 @@ export function useApplicationData() {
       })
     }
 
+  function editInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.put(`http://localhost:8001/api/appointments/${id}`, {interview} )
+      .then(() => {
+
+        const newDays = state.days.map((day) => {  
+          console.log(day)
+          return {...day, spots: spotsUpdate(state.day, day )} 
+        })
+
+        setState({
+          ...state,
+          days: newDays,
+          appointments
+        })
+
+      })
+    }
+
   function cancelInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -104,6 +131,6 @@ export function useApplicationData() {
   }, []) 
   
   return {
-    state, setDay, bookInterview, cancelInterview
+    state, setDay, bookInterview, cancelInterview, editInterview
   }
 }
