@@ -1,6 +1,5 @@
 import {useEffect, useState} from 'react';
 import axios from 'axios';
-import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors";
 
 export function useApplicationData() {
   const [state, setState] = useState({
@@ -12,6 +11,7 @@ export function useApplicationData() {
 
   //easy reset of data
   // axios.get('http://localhost:8001/api/debug/reset')
+  
   const spotsUpdate = (weekday, day, variable)  => {
     let spot = day.spots;
     console.log(spot)

@@ -1,6 +1,5 @@
 import React from 'react';
 import "./styles.scss";
-import Header from "./Header.js";
 import Empty from "./Empty.js";
 import Show from "./Show.js";
 import Form from "./Form.js";
@@ -78,7 +77,6 @@ const Appointment = function (props) {
           props.interview && props.interview.interviewer.id}
           interviewers={props.interviews}
           save={save}
-          // onSave={}
           onCancel={()=>back()}
         />
       )}
