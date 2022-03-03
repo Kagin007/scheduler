@@ -81,28 +81,28 @@ describe("Form", () => {
   //   expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   // });
 
-  it("can successfully save after trying to submit an empty student name", () => {
-    const save = jest.fn();
-    const { getByText, getByPlaceholderText, queryByText } = render(
-      <Form interviewers={interviewers} save={save} />
-    );
+  // it("can successfully save after trying to submit an empty student name", () => {
+  //   const save = jest.fn();
+  //   const { getByText, getByPlaceholderText, queryByText } = render(
+  //     <Form interviewers={interviewers} save={save} />
+  //   );
   
-    fireEvent.click(getByText("Save"));
+  //   fireEvent.click(getByText("Save"));
   
-    expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
-    expect(save).not.toHaveBeenCalled();
+  //   expect(getByText(/student name cannot be blank/i)).toBeInTheDocument();
+  //   expect(save).not.toHaveBeenCalled();
   
-    fireEvent.change(getByPlaceholderText("Enter Student Name"), {
-      target: { value: "Lydia Miller-Jones" }
-    });
+  //   fireEvent.change(getByPlaceholderText("Enter Student Name"), {
+  //     target: { value: "Lydia Miller-Jones" }
+  //   });
   
-    fireEvent.click(getByText("Save"));
+  //   fireEvent.click(getByText("Save"));
   
-    expect(queryByText(/student name cannot be blank/i)).toBeNull();
+  //   expect(queryByText(/student name cannot be blank/i)).toBeNull();
   
-    expect(save).toHaveBeenCalledTimes(1);
-    expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
-  });
+  //   expect(save).toHaveBeenCalledTimes(1);
+  //   expect(save).toHaveBeenCalledWith("Lydia Miller-Jones", null);
+  // });
 
   it("calls onCancel and resets the input field", () => {
     const onCancel = jest.fn();

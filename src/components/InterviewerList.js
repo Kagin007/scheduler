@@ -8,8 +8,8 @@ function InterviewerList(props) {
   const interviewers = props.interviewers
   
   const interviewerList = interviewers.map( (interviewer) =>
-  
-    <InterviewerListItem 
+    
+    <InterviewerListItem
       key={interviewer.id}
       name={interviewer.name}
       avatar={interviewer.avatar} 

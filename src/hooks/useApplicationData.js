@@ -25,7 +25,7 @@ export function useApplicationData() {
     }
     //for editing
     return spot
-  }
+  };
 
   function bookInterview(id, interview) {
 
@@ -51,9 +51,8 @@ export function useApplicationData() {
           ...state,
           days: newDays,
           appointments
-        })
-
-      })
+        });
+      });
     }
 
   function editInterview(id, interview) {
@@ -79,9 +78,8 @@ export function useApplicationData() {
           days: newDays,
           appointments
         })
-
-      })
-    }
+      });
+    };
 
   function cancelInterview(id, interview) {
     const appointment = {
@@ -109,9 +107,6 @@ export function useApplicationData() {
       })
     }
 
-
-
-
   const setDay = day => setState({ ...state, day });
 
   useEffect( () => {
@@ -133,4 +128,4 @@ export function useApplicationData() {
   return {
     state, setDay, bookInterview, cancelInterview, editInterview
   }
-}
+};

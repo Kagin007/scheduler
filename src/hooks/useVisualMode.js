@@ -27,8 +27,7 @@ export default function useVisualMode(initial) {
         setHistory(prevHistory)
         //set mode to last element in history array
         setMode(prevHistory[prevHistory.length-1])
-      }
-      
+      }      
     }
 
     return { mode, transition, back };       

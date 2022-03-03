@@ -13,7 +13,6 @@ const Show = function (props) {
     <section className="appointment__card-right">
       <section className="appointment__actions">
         <img
-          //was onEdit
           onClick = {props.edit}
           className="appointment__actions-button"
           src="images/edit.png"

@@ -75,6 +75,7 @@ const Appointment = function (props) {
   return (
     
     <article className="appointment">
+      {props.time}
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
         <Show
