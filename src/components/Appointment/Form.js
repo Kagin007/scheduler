@@ -36,6 +36,7 @@ const Form = function(props) {
     <section className="appointment__card-left">
       <form onSubmit={event => event.preventDefault()} autoComplete="off">
         <input
+          data-testid="student-name-input"        
           className="appointment__create-input text--semi-bold"
           name="name"
           type="text"
@@ -46,7 +47,6 @@ const Form = function(props) {
           */
           value={student}
           onChange={(event)=> setStudent(event.target.value)}
-        data-testid="student-name-input"
         />
       <section className="appointment__validation">{error}</section>
       </form>

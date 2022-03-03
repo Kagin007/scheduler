@@ -7,7 +7,6 @@ import Status from "./Status.js";
 import Confirm from "./Confirm.js";
 import Error from "./Error.js";
 import useVisualMode from 'hooks/useVisualMode';
-import useApplicationData from 'hooks/useApplicationData';
 
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
@@ -134,7 +133,6 @@ const Appointment = function (props) {
           onClose={()=>transition(SHOW)}
         />
       )}
-
     </article>
   );
 }
