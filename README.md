@@ -8,8 +8,10 @@ Interview Scheduler is a scheduling application built in React. Users can add, e
 
 ## Screenshots
 
-<!-- !["desktop view"](https://github.com/Kagin007/tweeter/blob/master/docs/tweeterFullScreen.png?raw=true) -->
-
+!["main page"](https://github.com/Kagin007/scheduler/blob/master/docs/Scheduler-%20post.png?raw=true)
+!["entering main form"](https://github.com/Kagin007/scheduler/blob/master/docs/Scheduler-Entering%20form.png?raw=true)
+!["savign form"](https://github.com/Kagin007/scheduler/blob/master/docs/Scheduler-%20saving.png?raw=true)
+!["posted form"](https://github.com/Kagin007/scheduler/blob/master/docs/Scheduler-%20post.png?raw=true)
 
 ## Setup
 
@@ -33,13 +35,8 @@ npm test
 npm run storybook
 ```
 
-
-
-
 ## Dependencies
 
-- Express
-- Node 5.10.x or above
-- Body Parser 1.15 or above
-- Chance 1.0 or above
-- md5 2.1 or above
+- Axios
+- @testing-library/react-hooks
+- react-test-renderer
