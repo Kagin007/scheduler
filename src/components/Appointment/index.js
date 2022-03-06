@@ -125,13 +125,13 @@ const Appointment = function (props) {
       {mode === ERROR_SAVE && (
         <Error
           message={"Error posting to server..."}
-          onClose={()=> back()}
+          onClose={()=> transition(CREATE, true)}
         />
       )}
       {mode === ERROR_DELETE && (
         <Error
           message={"Error deleting from server..."}
-          onClose={()=>transition(SHOW)}
+          onClose={()=>transition(CREATE, true)}
         />
       )}
     </article>
